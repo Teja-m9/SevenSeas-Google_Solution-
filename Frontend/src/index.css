@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy-deep: #0a192f;
+    --gold: #ffd700;
+  }
+}
+
+@layer components {
+  .glow {
+    @apply relative;
+  }
+
+  .glow::after {
+    @apply content-[''] absolute -inset-0.5 bg-gradient-to-r from-gold/50 to-blue-500/50 opacity-0 transition-opacity duration-300 rounded-lg blur-sm -z-10;
+  }
+
+  .glow:hover::after {
+    @apply opacity-100;
+  }
+
+  .nav-link {
+    @apply relative px-4 py-2 text-gray-300 hover:text-gold transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-gold to-blue-500 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .feature-card {
+    @apply bg-navy-900/50 backdrop-blur-sm p-6 rounded-xl border border-navy-700 transition-all duration-300 hover:scale-105 hover:border-gold/30;
+  }
+
+  .feature-icon {
+    @apply w-12 h-12 text-gold mb-4;
+  }
+}
+
+.particles-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at center, var(--navy-deep) 0%, #000 100%);
+}
+
+@keyframes flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-flow {
+  animation: flow 3s linear infinite;
+}
+
+/* Add this to your global CSS or create a new stylesheet */
+
+/* Message animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Agent bubble animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+.agent-bubble {
+  animation: pulse 2s infinite;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: inline-flex;
+  align-items: center;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  margin: 0 1px;
+  background-color: #d4af37;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.4;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation: bounce 1s infinite 0.1s;
+}
+.typing-indicator span:nth-child(2) {
+  animation: bounce 1s infinite 0.2s;
+}
+.typing-indicator span:nth-child(3) {
+  animation: bounce 1s infinite 0.3s;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
