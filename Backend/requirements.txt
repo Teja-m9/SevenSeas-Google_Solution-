@@ -1,0 +1,10 @@
+crewai
+crewai_tools 
+fastapi
+uvicorn
+bs4
+yfinance
+matplotlib
+django
+pydantic
+textblob
